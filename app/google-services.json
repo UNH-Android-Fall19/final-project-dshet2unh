@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "552540107000",
+    "firebase_url": "https://snap-it-e6baa.firebaseio.com",
+    "project_id": "snap-it-e6baa",
+    "storage_bucket": "snap-it-e6baa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552540107000:android:6608dbd133b9a7704a8b0d",
+        "android_client_info": {
+          "package_name": "com.example.snapit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552540107000-is07r3vdqrtq55cs1vru28rc9jnn8cai.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.snapit",
+            "certificate_hash": "1084f332fa137371bf366a925fb7303af0e94289"
+          }
+        },
+        {
+          "client_id": "552540107000-6abf98jg3bt2dvrlsv798fjb48ieoand.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.snapit",
+            "certificate_hash": "9b3c08d57a6c1d7f6e087add4db0c170cfad5e9f"
+          }
+        },
+        {
+          "client_id": "552540107000-bdfkcvnal22o60d95hvm2jng8q3ec4t5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP1hijJ3Wm9W_-sym7JOQBVBzy0SaYr8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552540107000-bdfkcvnal22o60d95hvm2jng8q3ec4t5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

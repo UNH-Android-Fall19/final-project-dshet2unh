@@ -1,23 +1,21 @@
-package com.example.snapit.adapter;
+package com.example.snapit.controllers.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.snapit.DisplayDocumentActivity;
+import com.example.snapit.views.DisplayDocumentActivity;
 import com.example.snapit.R;
-import com.example.snapit.beans.Bean_Document;
+import com.example.snapit.models.Bean_Document;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,8 +41,6 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.documentText.setText(documentList.get(position).getName());
-
-        Log.e("URL: ", documentList.get(position).getType() );
 
         Picasso.get().load(documentList.get(position).getFileUrl()).into(holder.documentImg);
 

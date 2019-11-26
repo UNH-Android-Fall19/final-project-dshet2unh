@@ -1,4 +1,4 @@
-package com.example.snapit;
+package com.example.snapit.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
+import com.example.snapit.R;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.squareup.picasso.Picasso;
 

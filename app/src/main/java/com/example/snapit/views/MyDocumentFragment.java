@@ -1,11 +1,8 @@
-package com.example.snapit;
+package com.example.snapit.views;
 
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.Network;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,23 +11,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.snapit.adapter.SubjectAdapter;
-import com.example.snapit.beans.Bean_Subject;
-import com.example.snapit.constant.AppConstant;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.example.snapit.R;
+import com.example.snapit.controllers.adapter.SubjectAdapter;
+import com.example.snapit.models.Bean_Subject;
+import com.example.snapit.controllers.AppConstant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,8 +41,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import javax.security.auth.Subject;
 
 
 /**

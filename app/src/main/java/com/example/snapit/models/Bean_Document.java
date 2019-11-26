@@ -1,4 +1,4 @@
-package com.example.snapit.beans;
+package com.example.snapit.models;
 
 public class Bean_Document {
     private String imageId;

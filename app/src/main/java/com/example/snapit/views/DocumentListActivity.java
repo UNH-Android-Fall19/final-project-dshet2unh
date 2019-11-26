@@ -1,4 +1,4 @@
-package com.example.snapit;
+package com.example.snapit.views;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,13 +21,14 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.snapit.adapter.DocumentAdapter;
-import com.example.snapit.beans.Bean_Document;
-import com.example.snapit.beans.Bean_Subject;
-import com.example.snapit.constant.AppConstant;
-import com.google.android.gms.tasks.Continuation;
+import com.example.snapit.R;
+import com.example.snapit.controllers.adapter.DocumentAdapter;
+import com.example.snapit.models.Bean_Document;
+import com.example.snapit.controllers.AppConstant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -39,26 +40,20 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import id.zelory.compressor.Compressor;
 
 public class DocumentListActivity extends AppCompatActivity implements DocumentAdapter.DocumentInterfaceCallback {
 
@@ -75,6 +70,10 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
     private ProgressDialog progressDialog;
     public RecyclerView recyclerView;
     private String uploadType;
+    private EditText etSearch;
+    private Button btnSearch;
+   public DocumentAdapter documentAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +85,7 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
         database = FirebaseDatabase.getInstance();
         fileStorage = FirebaseStorage.getInstance().getReference();
 
-        userDocumentData = database.getReference().child("Documents");
+        userDocumentData = database.getReference("Documents");
         userDocumentData.keepSynced(true);
 
         Intent intent = getIntent();
@@ -94,6 +93,35 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
         subjectName = intent.getStringExtra("subjectName");
 
         loadData();
+        //https://snap-it-e6baa.firebaseio.com/Documents
+
+        /* //search codeing
+        mDatabase = FirebaseDatabase.getInstance().getReference("user");
+        String str="ji";
+        Query query=mDatabase.orderByChild("name").startAt(str).endAt(str+"\uf8ff");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot:dataSnapshot.getChildren())
+                {
+                    User user=snapshot.getValue(User.class);
+                    String username=user.getName();
+                    Log.e("name",""+user.getName());
+                    Toast.makeText(MainActivity.this, ""+username, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        Toast.makeText(this, ""+query.toString(), Toast.LENGTH_SHORT).show();
+*/
+
+
+
+
 
     }
 
@@ -119,24 +147,96 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
             }
         });
 
+        etSearch = findViewById(R.id.et_search);
+        btnSearch = findViewById(R.id.btn_search);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                documentList.clear();
+                searchQuery();
+                documentAdapter.notifyDataSetChanged();
+            }
+        });
         recyclerView = findViewById(R.id.docs_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         if (currentUser != null){
-
             dataFetchFromFirebase();
 
         }
 
+
     }
 
-    private ArrayList<Bean_Document> dataFetchFromFirebase() {
+    private void searchQuery() {
+//        Toast.makeText(this, ""+doucumnetstr, Toast.LENGTH_SHORT).show();
+
+//        Query query= userDocumentData.child(subjectId).child("FMOWN")
+//                .startAt(doucumnetstr).endAt(doucumnetstr+"\uf8ff");
+        Log.e("subject id",""+subjectId);
+
+        String edtname=etSearch.getText().toString().trim();
+        final Query query= userDocumentData.child(currentUser.getUid()).child(subjectId).orderByChild("name").startAt(edtname).endAt(edtname+"\uf8ff");
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                fetchData(dataSnapshot);
+                Log.e("searchdata",""+dataSnapshot);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        /*query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Log.e("json",""+dataSnapshot);
+                for (DataSnapshot childsnapshot: dataSnapshot.getChildren()){
+                    String key=childsnapshot.getKey();
+                    Bean_Document bean_document=dataSnapshot.getValue(Bean_Document.class);
+                    String name=bean_document.getName();
+                    Log.e("NAme",""+name);
+                    Toast.makeText(DocumentListActivity.this, ""+key.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });*/
+    }
+
+    private void dataFetchFromFirebase() {
 
         userDocumentData.child(currentUser.getUid()).child(subjectId).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 fetchData(dataSnapshot);
+                Log.e(TAG, "onChildAdded: "+ dataSnapshot );
             }
 
             @Override
@@ -160,16 +260,13 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
             }
         });
 
-        return (ArrayList<Bean_Document>) documentList;
 
     }
 
     private void fetchData(DataSnapshot dataSnapshot) {
         Bean_Document beanDocument= dataSnapshot.getValue(Bean_Document.class);
-
         documentList.add(beanDocument);
-
-        DocumentAdapter documentAdapter = new DocumentAdapter(this, documentList);
+        documentAdapter = new DocumentAdapter(this, documentList);
         documentAdapter.setCallback(DocumentListActivity.this);
         recyclerView.setAdapter(documentAdapter);
 
@@ -231,12 +328,12 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
     }
 
     private void choosePDFFile() {
-        Toast.makeText(this, "updating soon", Toast.LENGTH_SHORT).show();
-        /*Intent galleryIntent = new Intent();
+//        Toast.makeText(this, "updating soon", Toast.LENGTH_SHORT).show();
+        Intent galleryIntent = new Intent();
         galleryIntent.setType("application/pdf/*");
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(galleryIntent,"SELECT FILE"),GALLERY_PICK);
-        uploadType = "Pdf";*/
+        uploadType = "Pdf";
     }
 
     private void chooseFromExistingFile() {
@@ -248,10 +345,10 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
     }
 
     private void openCamera() {
-        Toast.makeText(this, "Updating soon", Toast.LENGTH_SHORT).show();
-        /*Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+//        Toast.makeText(this, "Updating soon", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         startActivity(intent);
-        uploadType = "Camera";*/
+        uploadType = "Camera";
     }
 
     @Override
@@ -260,11 +357,11 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
 
         if (requestCode == GALLERY_PICK && resultCode == RESULT_OK) {
 
-            /*progressDialog = new ProgressDialog(DocumentListActivity.this);
+            progressDialog = new ProgressDialog(DocumentListActivity.this);
             progressDialog.setTitle("Uploading Image...");
             progressDialog.setMessage("Please Wait while we upload and process the image.");
             progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.show();*/
+            progressDialog.show();
 
             final Uri imageUri = data.getData();
           //  File thumb_filePath = new File(imageUri.getPath());
@@ -292,21 +389,21 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
 
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                /*if (imageUri != null) {
+                if (imageUri != null) {
 
                    // bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(this.getContentResolver(), imageUri));
                     ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), imageUri);
                     bitmap = ImageDecoder.decodeBitmap(source);
 
-                }*/
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            runTextRecognition(bitmap);
+//            runTextRecognition(bitmap);
 
             // comment temporary
-            /*final StorageReference filepath = fileStorage.child("notes_images").child(Objects.requireNonNull(imageUri.getLastPathSegment()));
+            final StorageReference filepath = fileStorage.child("notes_images").child(Objects.requireNonNull(imageUri.getLastPathSegment()));
 
             filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -352,31 +449,7 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
                     });
                     Log.e(TAG, "onSuccess:Upload_Image_Sucessful --- ");
                 }
-            });*/
-
-
-            /*filepath.putFile(imageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if (!task.isSuccessful()) {
-
-                    }
-
-                    // Continue with the task to get the download URL
-                    return filepath.getDownloadUrl();
-                }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()) {
-
-
-                    } else {
-                        // Handle failures
-                        // ...
-                    }
-                }
-            });*/
+            });
 
         }
     }
@@ -413,7 +486,7 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
         Toast.makeText(this, ""+sb.toString(), Toast.LENGTH_SHORT).show();
 
         //next activity
-        Intent intentToAudio=new Intent(getApplicationContext(), AudioOrPdfActivity.class);
+        Intent intentToAudio = new Intent(getApplicationContext(), AudioOrPdfActivity.class);
         Bundle bundle = new Bundle();
         //Add your data from getFactualResults method to bundle
         bundle.putString("VENUE_NAME", sb.toString());

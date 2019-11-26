@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".views.ProfileFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/profile_img_card_view"
@@ -23,8 +23,18 @@
             android:id="@+id/profile_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@mipmap/ic_launcher"
-            tools:src="@tools:sample/avatars" />
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:src="@drawable/ic_android" />
+
+        <ImageView
+            android:id="@+id/edt_profile_img"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="5dp"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
 
     </androidx.cardview.widget.CardView>
 
@@ -32,86 +42,111 @@
         android:id="@+id/tv_user_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:padding="5dp"
         android:text="@string/user_name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="14sp"
+        android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_email"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_img_card_view" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="80dp"
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
+        android:padding="5dp"
+        android:text="@string/dummy_user_email"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/cardView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView1"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="10dp"
-        app:cardMaxElevation="5dp"
-        app:contentPadding="15dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toStartOf="@+id/cardView2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+        app:layout_constraintTop_toBottomOf="@+id/tv_email">
 
-        <TextView
-            android:id="@+id/textView5"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:gravity="center"
-            android:text="@string/total_subject"
-            android:textColor="@android:color/black" />
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_subject_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/total_subjects"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+        </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="80dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        app:cardCornerRadius="10dp"
-        app:cardMaxElevation="5dp"
-        app:contentPadding="15dp"
+        android:layout_marginTop="32dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+        app:layout_constraintStart_toEndOf="@+id/cardView1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email">
 
-        <TextView
-            android:id="@+id/textView6"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/total_subject"
-            android:textAlignment="center"
-            android:textColor="@android:color/black" />
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_document_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/total_document"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+        </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/total_subjects"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toStartOf="@+id/textView8"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/total_document"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

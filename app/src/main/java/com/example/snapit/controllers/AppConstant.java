@@ -1,4 +1,4 @@
-package com.example.snapit.constant;
+package com.example.snapit.controllers;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

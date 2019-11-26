@@ -1,8 +1,7 @@
-package com.example.snapit.adapter;
+package com.example.snapit.controllers.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.snapit.DocumentListActivity;
+import com.example.snapit.views.DocumentListActivity;
 import com.example.snapit.R;
-import com.example.snapit.beans.Bean_Subject;
+import com.example.snapit.models.Bean_Subject;
 
 import java.util.List;
 

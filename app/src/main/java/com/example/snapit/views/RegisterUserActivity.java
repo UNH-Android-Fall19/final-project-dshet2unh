@@ -1,4 +1,4 @@
-package com.example.snapit;
+package com.example.snapit.views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.snapit.beans.Bean_User;
+import com.example.snapit.R;
+import com.example.snapit.models.Bean_User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -101,6 +102,9 @@ public class RegisterUserActivity extends AppCompatActivity {
                             Bean_User user = new Bean_User();
                             user.setName(name);
                             user.setEmail(email);
+
+                            int profileImage = R.mipmap.ic_launcher;
+                            user.setProfileUrl(String.valueOf(profileImage));
 
                             // Write a message to the database
                             FirebaseDatabase database = FirebaseDatabase.getInstance();

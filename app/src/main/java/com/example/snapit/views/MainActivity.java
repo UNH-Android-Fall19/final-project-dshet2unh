@@ -1,12 +1,13 @@
-package com.example.snapit;
+package com.example.snapit.views;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.snapit.beans.Bean_Subject;
-import com.example.snapit.constant.AppConstant;
+import com.example.snapit.R;
+import com.example.snapit.models.Bean_Subject;
+import com.example.snapit.controllers.AppConstant;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;

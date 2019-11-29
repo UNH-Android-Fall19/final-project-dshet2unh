@@ -27,12 +27,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
 
+    private static final String TAG = ProfileFragment.class.getSimpleName();
     private View view;
     private Context context;
     private FirebaseUser currentUser;
@@ -80,6 +86,13 @@ public class ProfileFragment extends Fragment {
 
         if (currentUser != null){
 
+            editImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
             mUserData.child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -98,18 +111,19 @@ public class ProfileFragment extends Fragment {
                 }
             });
 
+
             mSubjectData.child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
-                @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    int count = Math.toIntExact(dataSnapshot.getChildrenCount());
+                    Log.e(TAG, "onDataChange: "+ dataSnapshot.getChildrenCount() );
+                    String count = String.valueOf(dataSnapshot.getChildrenCount());
+                    int subjectIntCount = Integer.parseInt(count);
 
-                    if (count > 10){
-                        subjectCount.setText(String.valueOf(count));
+                    if (subjectIntCount > 10){
+                        subjectCount.setText(String.valueOf(subjectIntCount));
                     }else {
-                        subjectCount.setText("0"+ count);
+                        subjectCount.setText("0"+ subjectIntCount);
                     }
-
                 }
 
                 @Override
@@ -119,17 +133,34 @@ public class ProfileFragment extends Fragment {
             });
 
 
-            mDocumentData.child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
-                @RequiresApi(api = Build.VERSION_CODES.N)
+            mDocumentData.child(currentUser.getUid()).addChildEventListener(new ChildEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    int count = Math.toIntExact(dataSnapshot.getChildrenCount());
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                    if (count > 10){
-                        documentCount.setText(String.valueOf(count));
+                    String childCount = String.valueOf(dataSnapshot.getChildrenCount());
+                    int docCount = Integer.parseInt(childCount);
+
+                    if (docCount > 10){
+                        documentCount.setText(String.valueOf(docCount));
                     }else {
-                        documentCount.setText("0"+ count);
+                        documentCount.setText("0"+ docCount);
                     }
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 }
 
                 @Override

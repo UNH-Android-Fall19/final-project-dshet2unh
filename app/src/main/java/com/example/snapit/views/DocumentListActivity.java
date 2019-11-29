@@ -18,6 +18,7 @@ import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -50,8 +51,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -67,13 +72,14 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
     private String subjectId, subjectName;
     private static final int MY_PERMISSION_REQUEST_CODE = 100;
     private static final int GALLERY_PICK = 101;
+    private static final int REQUEST_CAMERA = 102;
     private ProgressDialog progressDialog;
     public RecyclerView recyclerView;
     private String uploadType;
     private EditText etSearch;
     private Button btnSearch;
-   public DocumentAdapter documentAdapter;
-
+    public DocumentAdapter documentAdapter;
+    private String imgPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,34 +100,6 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
 
         loadData();
         //https://snap-it-e6baa.firebaseio.com/Documents
-
-        /* //search codeing
-        mDatabase = FirebaseDatabase.getInstance().getReference("user");
-        String str="ji";
-        Query query=mDatabase.orderByChild("name").startAt(str).endAt(str+"\uf8ff");
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot:dataSnapshot.getChildren())
-                {
-                    User user=snapshot.getValue(User.class);
-                    String username=user.getName();
-                    Log.e("name",""+user.getName());
-                    Toast.makeText(MainActivity.this, ""+username, Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        Toast.makeText(this, ""+query.toString(), Toast.LENGTH_SHORT).show();
-*/
-
-
-
-
 
     }
 
@@ -347,112 +325,175 @@ public class DocumentListActivity extends AppCompatActivity implements DocumentA
     private void openCamera() {
 //        Toast.makeText(this, "Updating soon", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, setImageUri());
         uploadType = "Camera";
+        startActivityForResult(intent, REQUEST_CAMERA);
+    }
+
+    private Uri setImageUri() {
+        // Store image in dcim
+        File file = new File(Environment.getExternalStorageDirectory() + "/DCIM/", "image" + new Date().getTime() + ".png");
+        Uri imgUri = Uri.fromFile(file);
+        this.imgPath = file.getAbsolutePath();
+        return imgUri;
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == GALLERY_PICK && resultCode == RESULT_OK) {
+        if (resultCode == RESULT_OK){
+            if (requestCode == GALLERY_PICK ) {
 
-            progressDialog = new ProgressDialog(DocumentListActivity.this);
-            progressDialog.setTitle("Uploading Image...");
-            progressDialog.setMessage("Please Wait while we upload and process the image.");
-            progressDialog.setCanceledOnTouchOutside(false);
-            progressDialog.show();
+//                String originalimages=getImagePath();
+                //Bitmap image2 = decodeFile(originalimages);
+//                Bitmap photo = (Bitmap) data.getExtras().get("data");
+//               String imagesuri=photo.toString();
+//                Log.e("onActivityResult:",""+photo.toString());
+//
+                progressDialog = new ProgressDialog(DocumentListActivity.this);
+                progressDialog.setTitle("Uploading Image...");
+                progressDialog.setMessage("Please Wait while we upload and process the image.");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
 
-            final Uri imageUri = data.getData();
-          //  File thumb_filePath = new File(imageUri.getPath());
-            final String current_user_id = currentUser.getUid();
+                final Uri imageUri = data.getData();
+                  File thumb_filePath = new File(imageUri.getPath());
+                final String current_user_id = currentUser.getUid();
 
-            //compress images comment
+                /*Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                    if (imageUri != null) {
 
-        /*    try {
-                Bitmap thumb_bitmap = new Compressor(this)
-                        .setMaxWidth(200)
-                        .setMaxHeight(200)
-                        .setQuality(75)
-                        .compressToBitmap(thumb_filePath);
+                        // bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(this.getContentResolver(), imageUri));
+                        ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), imageUri);
+                        bitmap = ImageDecoder.decodeBitmap(source);
 
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                thumb_bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-//                byte[] thumb_byte = baos.toByteArray();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-*/
-
-            Bitmap bitmap = null;
-
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-                if (imageUri != null) {
-
-                   // bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(this.getContentResolver(), imageUri));
-                    ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), imageUri);
-                    bitmap = ImageDecoder.decodeBitmap(source);
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
 
 //            runTextRecognition(bitmap);
 
-            // comment temporary
-            final StorageReference filepath = fileStorage.child("notes_images").child(Objects.requireNonNull(imageUri.getLastPathSegment()));
+                // done error gae run kar
+                // comment temporary
+                final StorageReference filepath = fileStorage.child("notes_images").child(Objects.requireNonNull(imageUri.getLastPathSegment()));
 
-            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    filepath.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Uri> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(DocumentListActivity.this, "Added Successfully", Toast.LENGTH_SHORT).show();
+                        filepath.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(DocumentListActivity.this, "Added Successfully", Toast.LENGTH_SHORT).show();
 
-                                Uri downloadUri = task.getResult();
-                                DatabaseReference dbRef = database.getReference().child("Documents")
-                                        .child(current_user_id).child(subjectId).child(AppConstant.getRandomId());
+                                    Uri downloadUri = task.getResult();
+                                    DatabaseReference dbRef = database.getReference().child("Documents")
+                                            .child(current_user_id).child(subjectId).child(AppConstant.getRandomId());
 
-                                Bean_Document beanImage = new Bean_Document();
-                                beanImage.setName(imageUri.getLastPathSegment());
-                                beanImage.setFileUrl(downloadUri.toString());
-                                beanImage.setType(uploadType);
+                                    Bean_Document beanImage = new Bean_Document();
+                                    beanImage.setName(imageUri.getLastPathSegment());
+                                    beanImage.setFileUrl(downloadUri.toString());
+                                    beanImage.setType(uploadType);
 
-                                dbRef.setValue(beanImage).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
+                                    dbRef.setValue(beanImage).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
 
-                                        if (task.isSuccessful()){
-                                            Toast.makeText(DocumentListActivity.this,"Document Uploaded Successfully !",
-                                                    Toast.LENGTH_SHORT).show();
+                                            if (task.isSuccessful()){
+                                                Toast.makeText(DocumentListActivity.this,"Document Uploaded Successfully !",
+                                                        Toast.LENGTH_SHORT).show();
 
-                                        }else {
-                                            Toast.makeText(DocumentListActivity.this, "Error While Uploading Document", Toast.LENGTH_SHORT).show();
+                                            }else {
+                                                Toast.makeText(DocumentListActivity.this, "Error While Uploading Document", Toast.LENGTH_SHORT).show();
+                                            }
+
+                                            progressDialog.dismiss();
+
                                         }
+                                    });
 
-                                        progressDialog.dismiss();
-
-                                    }
-                                });
-
-                            }else {
-                                //handle failure
-                                //...
+                                }else {
+                                    //handle failure
+                                    //...
+                                }
                             }
+                        });
+                        Log.e(TAG, "onSuccess:Upload_Image_Sucessful --- ");
+                    }
+                });
+
+            }else if (requestCode == REQUEST_CAMERA){
+
+               final Uri mImageUri = data.getData();
+                //DONE error kai che joe ne kau
+                Log.e("mImageUri","Camera"+mImageUri.toString());
+
+                    final StorageReference filepath = fileStorage.child("notes_images").child(Objects.requireNonNull(mImageUri.getLastPathSegment()));
+
+                    filepath.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            filepath.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(DocumentListActivity.this, "Added Successfully", Toast.LENGTH_SHORT).show();
+
+                                        Uri downloadUri = task.getResult();
+                                        DatabaseReference dbRef = database.getReference().child("Documents")
+                                                .child(currentUser.getUid()).child(subjectId).child(AppConstant.getRandomId());
+
+                                        Bean_Document beanImage = new Bean_Document();
+                                        beanImage.setName(mImageUri.getLastPathSegment());
+                                        beanImage.setFileUrl(downloadUri.toString());
+                                        beanImage.setType(uploadType);
+
+                                        dbRef.setValue(beanImage).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+
+                                                if (task.isSuccessful()){
+                                                    Toast.makeText(DocumentListActivity.this,"Document Uploaded Successfully !",
+                                                            Toast.LENGTH_SHORT).show();
+
+                                                }else {
+                                                    Toast.makeText(DocumentListActivity.this, "Error While Uploading Document", Toast.LENGTH_SHORT).show();
+                                                }
+
+                                                progressDialog.dismiss();
+
+                                            }
+                                        });
+
+                                    }else {
+                                        //handle failure
+                                        //...
+                                    }
+                                }
+                            });
+                            Log.e(TAG, "onSuccess:Upload_Image_Sucessful --- ");
                         }
                     });
-                    Log.e(TAG, "onSuccess:Upload_Image_Sucessful --- ");
+
                 }
-            });
+
 
         }
+
     }
+
+
+    private String getImagePath() {
+        return imgPath;
+    }
+
 
     private void runTextRecognition(Bitmap bitmap) {
         FirebaseVisionImage image = FirebaseVisionImage.fromBitmap(bitmap);

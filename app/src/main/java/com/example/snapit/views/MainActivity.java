@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference mUsersDatabase;
     private GoogleSignInClient mGoogleSignInClient;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
 
-        final NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
 
         navigationView.getMenu().findItem(R.id.nav_document).setChecked(true);
 
@@ -157,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
                             String email = dataSnapshot.child("email").getValue().toString();
                             userName.setText(name);
                             userEmail.setText(email);
+
                         }
 
                         @Override
@@ -174,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     private void loadFragment(Fragment fragment) {
@@ -186,16 +190,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        /*Log.e(TAG, "onCreateOptionsMenu:000000000 " );
+        if (navigationView.getMenu().findItem(R.id.nav_profile).isChecked()){
+            Log.e(TAG, "onCreateOptionsMenu:11111" );
+            menu.findItem(R.id.action_add_notes).setVisible(false);
+
+        }else {
+            Log.e(TAG, "onCreateOptionsMenu:22222" );
+            menu.findItem(R.id.action_add_notes).setVisible(true);
+
+        }*/
+
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_add_notes){
-            addNewNoteDialog();
 
+        if (item.getItemId() == R.id.action_add_notes){
+
+            addNewNoteDialog();
         }
 
         return super.onOptionsItemSelected(item);

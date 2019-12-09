@@ -5,8 +5,17 @@ public class Bean_Document {
     private String fileUrl;
     private String name;
     private String type;
+    private String docSubjectName;
 
     public Bean_Document() {
+    }
+
+    public void setDocSubjectName(String docSubjectName) {
+        this.docSubjectName = docSubjectName;
+    }
+
+    public String getDocSubjectName() {
+        return docSubjectName;
     }
 
     public String getType() {

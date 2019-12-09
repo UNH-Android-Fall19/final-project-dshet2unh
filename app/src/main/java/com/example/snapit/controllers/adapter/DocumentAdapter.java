@@ -51,19 +51,18 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.ViewHo
                 intent.putExtra("docType", documentList.get(position).getType());
                 intent.putExtra("docName", documentList.get(position).getName());
                 intent.putExtra("docUrl", documentList.get(position).getFileUrl());
+                intent.putExtra("subjectName", documentList.get(position).getDocSubjectName());
                 context.startActivity(intent);
 
-                /*if (documentList.get(position).getType().equalsIgnoreCase("Pdf")){
-                    // open in pdf viewer
-                    Toast.makeText(context, "PDF", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(documentList.get(position).getFileUrl()));
-                    context.startActivity(browserIntent);
-
-                }else {
-                    Toast.makeText(context, "Image", Toast.LENGTH_SHORT).show();
-                }*/
+        holder.docCardView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Log.e("Hello", "onLongClick: "+ documentList.get(position).getImageId() );
+                callback.showOptionMenu(position, v);
+                return true;
             }
         });
 
@@ -85,7 +84,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.ViewHo
     }
 
     public interface DocumentInterfaceCallback{
-        void showOption(int position, View view);
+        void showOptionMenu(int position, View view);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "552540107000-6fr26mj0etrfumurak8cr39n3ko3ost7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.snapit",
+            "certificate_hash": "c0a76d81b7afe09680477db429ea39a245becbd8"
+          }
+        },
+        {
           "client_id": "552540107000-is07r3vdqrtq55cs1vru28rc9jnn8cai.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

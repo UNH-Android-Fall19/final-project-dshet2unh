@@ -34,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -42,6 +43,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -149,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
                 final TextView userName = navigationView.findViewById(R.id.tv_user_name);
                 final TextView userEmail = navigationView.findViewById(R.id.user_email);
+                final ImageView navHeaderImg = navigationView.findViewById(R.id.nav_header_img);
 
                 if (currentUser != null){
 
@@ -157,8 +160,11 @@ public class MainActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             String name = dataSnapshot.child("name").getValue().toString();
                             String email = dataSnapshot.child("email").getValue().toString();
+                            String profileImg = dataSnapshot.child("profileUrl").getValue().toString();
+
                             userName.setText(name);
                             userEmail.setText(email);
+                            Picasso.get().load(profileImg).into(navHeaderImg);
 
                         }
 
@@ -193,16 +199,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        /*Log.e(TAG, "onCreateOptionsMenu:000000000 " );
-        if (navigationView.getMenu().findItem(R.id.nav_profile).isChecked()){
-            Log.e(TAG, "onCreateOptionsMenu:11111" );
-            menu.findItem(R.id.action_add_notes).setVisible(false);
-
-        }else {
-            Log.e(TAG, "onCreateOptionsMenu:22222" );
-            menu.findItem(R.id.action_add_notes).setVisible(true);
-
-        }*/
 
         return true;
     }
@@ -212,14 +208,14 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.action_add_notes){
 
-            addNewNoteDialog();
+            addNewSubjectDialog();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     @SuppressLint("InflateParams")
-    private void addNewNoteDialog() {
+    private void addNewSubjectDialog() {
         Log.e(TAG, "addNewNoteDialog: Open" );
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 

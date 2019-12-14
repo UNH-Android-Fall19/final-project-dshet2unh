@@ -105,13 +105,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        /*googleLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
-
     }
 
     // [START onactivityresult]
@@ -156,6 +149,8 @@ public class LoginActivity extends AppCompatActivity {
                             Bean_User user = new Bean_User();
                             user.setName(acct.getDisplayName());
                             user.setEmail(acct.getEmail());
+                            int profileImage = R.mipmap.ic_launcher;
+                            user.setProfileUrl(String.valueOf(profileImage));
 
                             // Write a message to the database
                             FirebaseDatabase database = FirebaseDatabase.getInstance();

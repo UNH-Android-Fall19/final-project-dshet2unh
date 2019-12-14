@@ -33,13 +33,13 @@ import java.util.Objects;
 
 public class AudioOrPdfActivity extends AppCompatActivity {
 
-   private TextToSpeech tts;
-   private TextView tvdectect;
-   private Button btnAudio;
-   private Button btnpdf;
-   private String venName, subjectName;
-   private Button btnspeech;
-   private Button btnback;
+    private TextToSpeech tts;
+    private TextView tvdectect;
+    private Button btnAudio;
+    private Button btnpdf;
+    private String venName, subjectName;
+    private Button btnspeech;
+    private Button btnback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +71,7 @@ public class AudioOrPdfActivity extends AppCompatActivity {
                             if (result == TextToSpeech.LANG_MISSING_DATA
                                     || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                                 Log.e("TTS", "This Language is not supported");
+
                             } else {
                                 speakOut();
                             }
@@ -156,15 +157,15 @@ public class AudioOrPdfActivity extends AppCompatActivity {
                 tts.setVoice(new Voice("nomeVoce", locale, Voice.QUALITY_VERY_HIGH, Voice.LATENCY_NORMAL, false, null));
             }
 
-            String ext=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
+
             String mfile = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(System.currentTimeMillis());
-            File f = new File(ext+"/Snapit/"+ subjectName + "/" );
+            File f = new File(Environment.getExternalStorageDirectory() +"/Snapit/"+ subjectName + "/" );
             if (!f.exists()) {
                 f.mkdir();
             }
 //            File file1 = new File(f.getAbsolutePath(), mfile + ".pdf");
 
-//
+
             String completePath =f.getAbsolutePath()
                     + "/"+ subjectName + "_" +mfile+ ".wav";
             File fileToCreate = new File(completePath);
@@ -202,8 +203,8 @@ public class AudioOrPdfActivity extends AppCompatActivity {
         String mfile = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(System.currentTimeMillis());
 
         boolean success = true;
-        String ext=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
-        File f = new File(ext+"/Snapit/"+ subjectName + "/" );
+//        String ext=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
+        File f = new File(Environment.getExternalStorageDirectory() +"/Snapit/"+ subjectName + "/" );
         if (!f.exists()) {
             f.mkdir();
         }
@@ -217,8 +218,8 @@ public class AudioOrPdfActivity extends AppCompatActivity {
             doc.addAuthor("snapit");
             doc.add(new Paragraph(mtext, smallBold));
             doc.close();
-             Log.e("Storage",""+file1);
-              Toast.makeText(this, ""+mfile+".pdf"+" is saved to "+file1, Toast.LENGTH_SHORT).show();
+            Log.e("Storage",""+file1);
+            Toast.makeText(this, ""+mfile+".pdf"+" is saved to "+file1, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(this, "This is Error msg : " + e.getMessage(), Toast.LENGTH_SHORT).show();
             Log.e("error", "" + e);

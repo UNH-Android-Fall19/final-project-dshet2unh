@@ -1,0 +1,7 @@
+#Sat Dec 14 13:08:53 EST 2019
+base.0=C\:\\Users\\Dhwani\\Downloads\\M.S. UNH 5th sem\\Android development\\Final Project\\FINAL PROJECT\\Final project 6\\SnapIt-20191211T185041Z-001\\SnapIt\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out\\classes.dex
+path.1=classes2.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=C\:\\Users\\Dhwani\\Downloads\\M.S. UNH 5th sem\\Android development\\Final Project\\FINAL PROJECT\\Final project 6\\SnapIt-20191211T185041Z-001\\SnapIt\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out\\classes2.dex

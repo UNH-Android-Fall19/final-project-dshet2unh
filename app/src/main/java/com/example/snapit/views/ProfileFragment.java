@@ -211,7 +211,6 @@ public class ProfileFragment extends Fragment {
 
 
     private void openGallery() {
-        //TODO: open gallery intent and wait for user to pick an image !
 
         Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
@@ -251,7 +250,6 @@ public class ProfileFragment extends Fragment {
             // we need to save its reference to a Uri variable
             final Uri imageUri = data.getData();
             profileUpdate(imageUri);
-         //   profileImage.setImageURI(imageUri);
         }
         else {
             Toast.makeText(getActivity(),"Please select file", LENGTH_SHORT).show();
@@ -282,6 +280,7 @@ public class ProfileFragment extends Fragment {
                             public void onComplete(@NonNull Task<Void> task) {
 
                                 if (task.isSuccessful()) {
+                                    Toast.makeText(context, "Image Updated", LENGTH_SHORT).show();
                                 } else {
 
                                     Toast.makeText(getActivity(), "File not Successfully Uploaded", LENGTH_SHORT).show();
@@ -298,11 +297,6 @@ public class ProfileFragment extends Fragment {
                 });
             }
         });
-
-
-
-
-
 
 
     }

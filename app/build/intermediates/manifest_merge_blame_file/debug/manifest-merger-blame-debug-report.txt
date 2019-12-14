@@ -1,0 +1,295 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.snapit"
+4    android:versionCode="2"
+5    android:versionName="1.1" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:6:5-67
+11-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:7:5-65
+12-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:7:22-62
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:8:5-81
+13-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:8:22-78
+14
+15    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+16    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+17-->[com.google.firebase:firebase-database:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\829c2c9fef73b753e2e0084cf78085fb\firebase-database-19.2.0\AndroidManifest.xml:25:5-79
+17-->[com.google.firebase:firebase-database:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\829c2c9fef73b753e2e0084cf78085fb\firebase-database-19.2.0\AndroidManifest.xml:25:22-76
+18    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+18-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\156f946ae01c324cb8270e4ec3cfe231\play-services-measurement-api-17.2.1\AndroidManifest.xml:24:5-68
+18-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\156f946ae01c324cb8270e4ec3cfe231\play-services-measurement-api-17.2.1\AndroidManifest.xml:24:22-65
+19    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+19-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:26:5-82
+19-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:26:22-79
+20    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+20-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:26:5-110
+20-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:26:22-107
+21
+22    <application
+22-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:10:5-36:19
+23        android:allowBackup="false"
+23-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:11:9-36
+24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+24-->[androidx.core:core:1.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\3bcafbc2e95e113b9db4402c8bff255d\core-1.1.0\AndroidManifest.xml:24:18-86
+25        android:debuggable="true"
+26        android:icon="@mipmap/ic_launcher"
+26-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:12:9-43
+27        android:label="@string/app_name"
+27-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:13:9-41
+28        android:roundIcon="@mipmap/ic_launcher_round"
+28-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:14:9-54
+29        android:supportsRtl="true"
+29-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:15:9-35
+30        android:testOnly="true"
+31        android:theme="@style/AppTheme" >
+31-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:16:9-40
+32        <activity android:name="com.example.snapit.views.AudioOrPdfActivity" />
+32-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:18:9-61
+32-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:18:19-59
+33        <activity android:name="com.example.snapit.views.DisplayDocumentActivity" />
+33-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:19:9-67
+33-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:19:19-64
+34        <activity android:name="com.example.snapit.views.DocumentListActivity" />
+34-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:20:9-64
+34-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:20:19-61
+35        <activity
+35-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:21:9-29:20
+36            android:name="com.example.snapit.views.MainActivity"
+36-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:22:13-47
+37            android:theme="@style/AppTheme.NoActionBar" >
+37-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:23:13-56
+38            <intent-filter>
+38-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:24:13-28:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:25:17-69
+39-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:25:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:27:17-77
+41-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:27:27-74
+42            </intent-filter>
+43        </activity>
+44        <activity
+44-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:30:9-32:52
+45            android:name="com.example.snapit.views.RegisterUserActivity"
+45-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:31:13-55
+46            android:screenOrientation="portrait" />
+46-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:32:13-49
+47        <activity
+47-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:33:9-35:52
+48            android:name="com.example.snapit.views.LoginActivity"
+48-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:34:13-48
+49            android:screenOrientation="portrait" />
+49-->C:\Users\Dhwani\Downloads\M.S. UNH 5th sem\Android development\Final Project\FINAL PROJECT\Final project 6\SnapIt-20191211T185041Z-001\SnapIt\app\src\main\AndroidManifest.xml:35:13-49
+50
+51        <meta-data
+51-->[com.firebaseui:firebase-ui-database:1.1.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\3603910a0da228b01bb74cc81f6dcecd\jetified-firebase-ui-database-1.1.1\AndroidManifest.xml:14:9-16:69
+52            android:name="com.google.android.gms.version"
+52-->[com.firebaseui:firebase-ui-database:1.1.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\3603910a0da228b01bb74cc81f6dcecd\jetified-firebase-ui-database-1.1.1\AndroidManifest.xml:15:13-58
+53            android:value="@integer/google_play_services_version" />
+53-->[com.firebaseui:firebase-ui-database:1.1.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\3603910a0da228b01bb74cc81f6dcecd\jetified-firebase-ui-database-1.1.1\AndroidManifest.xml:16:13-66
+54
+55        <activity
+55-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:24:9-31:50
+56            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+56-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:25:13-85
+57            android:excludeFromRecents="true"
+57-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:26:13-46
+58            android:exported="true"
+58-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:27:13-36
+59            android:launchMode="singleTask"
+59-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:28:13-44
+60            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+60-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:29:13-102
+61            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+61-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:30:13-72
+62
+63        <service
+63-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:33:9-39:19
+64            android:name="com.google.firebase.components.ComponentDiscoveryService"
+64-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:34:13-84
+65            android:directBootAware="true"
+65-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\2c0b237718fe132e3b134d2f0402bb15\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+66            android:exported="false" >
+66-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:35:13-37
+67            <meta-data
+67-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:36:13-38:85
+68                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+68-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:37:17-109
+69                android:value="com.google.firebase.components.ComponentRegistrar" />
+69-->[com.google.firebase:firebase-auth:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b5644461ae56d3bcb008bd7a18c828b2\firebase-auth-19.2.0\AndroidManifest.xml:38:17-82
+70            <meta-data
+70-->[com.google.firebase:firebase-database:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\829c2c9fef73b753e2e0084cf78085fb\firebase-database-19.2.0\AndroidManifest.xml:32:13-34:85
+71                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+71-->[com.google.firebase:firebase-database:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\829c2c9fef73b753e2e0084cf78085fb\firebase-database-19.2.0\AndroidManifest.xml:33:17-109
+72                android:value="com.google.firebase.components.ComponentRegistrar" />
+72-->[com.google.firebase:firebase-database:19.2.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\829c2c9fef73b753e2e0084cf78085fb\firebase-database-19.2.0\AndroidManifest.xml:34:17-82
+73            <meta-data
+73-->[com.google.firebase:firebase-storage:19.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\a35127b4be6670f1ae0c091bde20438e\firebase-storage-19.1.0\AndroidManifest.xml:33:13-35:85
+74                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+74-->[com.google.firebase:firebase-storage:19.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\a35127b4be6670f1ae0c091bde20438e\firebase-storage-19.1.0\AndroidManifest.xml:34:17-107
+75                android:value="com.google.firebase.components.ComponentRegistrar" />
+75-->[com.google.firebase:firebase-storage:19.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\a35127b4be6670f1ae0c091bde20438e\firebase-storage-19.1.0\AndroidManifest.xml:35:17-82
+76            <meta-data
+76-->[com.google.firebase:firebase-ml-vision:24.0.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\41fb90d918e2e97a71541d59b2ad2a5c\firebase-ml-vision-24.0.1\AndroidManifest.xml:12:13-14:85
+77                android:name="com.google.firebase.components:com.google.firebase.ml.vision.VisionRegistrar"
+77-->[com.google.firebase:firebase-ml-vision:24.0.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\41fb90d918e2e97a71541d59b2ad2a5c\firebase-ml-vision-24.0.1\AndroidManifest.xml:13:17-108
+78                android:value="com.google.firebase.components.ComponentRegistrar" />
+78-->[com.google.firebase:firebase-ml-vision:24.0.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\41fb90d918e2e97a71541d59b2ad2a5c\firebase-ml-vision-24.0.1\AndroidManifest.xml:14:17-82
+79            <meta-data
+79-->[com.google.firebase:firebase-ml-common:22.0.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\7c38319bb253128bf336918fd2ac2159\firebase-ml-common-22.0.1\AndroidManifest.xml:11:13-13:85
+80                android:name="com.google.firebase.components:com.google.firebase.ml.common.CommonComponentRegistrar"
+80-->[com.google.firebase:firebase-ml-common:22.0.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\7c38319bb253128bf336918fd2ac2159\firebase-ml-common-22.0.1\AndroidManifest.xml:12:17-117
+81                android:value="com.google.firebase.components.ComponentRegistrar" />
+81-->[com.google.firebase:firebase-ml-common:22.0.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\7c38319bb253128bf336918fd2ac2159\firebase-ml-common-22.0.1\AndroidManifest.xml:13:17-82
+82            <meta-data
+82-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\156f946ae01c324cb8270e4ec3cfe231\play-services-measurement-api-17.2.1\AndroidManifest.xml:30:13-32:85
+83                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+83-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\156f946ae01c324cb8270e4ec3cfe231\play-services-measurement-api-17.2.1\AndroidManifest.xml:31:17-139
+84                android:value="com.google.firebase.components.ComponentRegistrar" />
+84-->[com.google.android.gms:play-services-measurement-api:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\156f946ae01c324cb8270e4ec3cfe231\play-services-measurement-api-17.2.1\AndroidManifest.xml:32:17-82
+85            <meta-data
+85-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:32:13-34:85
+86                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+86-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:33:17-96
+87                android:value="com.google.firebase.components.ComponentRegistrar" />
+87-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:34:17-82
+88        </service>
+89
+90        <activity
+90-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\f93910dcc4bbfd964f949e2ecee79f63\play-services-auth-17.0.0\AndroidManifest.xml:23:9-27:75
+91            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+91-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\f93910dcc4bbfd964f949e2ecee79f63\play-services-auth-17.0.0\AndroidManifest.xml:24:13-93
+92            android:excludeFromRecents="true"
+92-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\f93910dcc4bbfd964f949e2ecee79f63\play-services-auth-17.0.0\AndroidManifest.xml:25:13-46
+93            android:exported="false"
+93-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\f93910dcc4bbfd964f949e2ecee79f63\play-services-auth-17.0.0\AndroidManifest.xml:26:13-37
+94            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+94-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\f93910dcc4bbfd964f949e2ecee79f63\play-services-auth-17.0.0\AndroidManifest.xml:27:13-72
+95        <!--
+96            Service handling Google Sign-In user revocation. For apps that do not integrate with
+97            Google Sign-In, this service will never be started.
+98        -->
+99        <service
+99-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\f93910dcc4bbfd964f949e2ecee79f63\play-services-auth-17.0.0\AndroidManifest.xml:33:9-36:110
+100            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+100-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\f93910dcc4bbfd964f949e2ecee79f63\play-services-auth-17.0.0\AndroidManifest.xml:34:13-89
+101            android:exported="true"
+101-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\f93910dcc4bbfd964f949e2ecee79f63\play-services-auth-17.0.0\AndroidManifest.xml:35:13-36
+102            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+102-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\f93910dcc4bbfd964f949e2ecee79f63\play-services-auth-17.0.0\AndroidManifest.xml:36:13-107
+103
+104        <provider
+104-->[com.squareup.picasso:picasso:2.71828] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\c6c3dde49b4ed5f7be57775b93235d12\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+105            android:name="com.squareup.picasso.PicassoProvider"
+105-->[com.squareup.picasso:picasso:2.71828] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\c6c3dde49b4ed5f7be57775b93235d12\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+106            android:authorities="com.example.snapit.com.squareup.picasso"
+106-->[com.squareup.picasso:picasso:2.71828] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\c6c3dde49b4ed5f7be57775b93235d12\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+107            android:exported="false" />
+107-->[com.squareup.picasso:picasso:2.71828] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\c6c3dde49b4ed5f7be57775b93235d12\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+108
+109        <receiver
+109-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:37:9-44:20
+110            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+110-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:38:13-78
+111            android:exported="true"
+111-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:39:13-36
+112            android:permission="com.google.android.c2dm.permission.SEND" >
+112-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:40:13-73
+113            <intent-filter>
+113-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:41:13-43:29
+114                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+114-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:42:17-81
+114-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\333a4b14f4a36b22a5b8879ae448e614\firebase-iid-19.0.0\AndroidManifest.xml:42:25-78
+115            </intent-filter>
+116        </receiver>
+117
+118        <activity
+118-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\cfafb781a345d3f54848aefef9b2f0c0\play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+119            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+119-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\cfafb781a345d3f54848aefef9b2f0c0\play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+120            android:exported="false"
+120-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\cfafb781a345d3f54848aefef9b2f0c0\play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+121            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+121-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\cfafb781a345d3f54848aefef9b2f0c0\play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+122
+123        <provider
+123-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\2c0b237718fe132e3b134d2f0402bb15\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+124            android:name="com.google.firebase.provider.FirebaseInitProvider"
+124-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\2c0b237718fe132e3b134d2f0402bb15\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+125            android:authorities="com.example.snapit.firebaseinitprovider"
+125-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\2c0b237718fe132e3b134d2f0402bb15\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+126            android:exported="false"
+126-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\2c0b237718fe132e3b134d2f0402bb15\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+127            android:initOrder="100" />
+127-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\2c0b237718fe132e3b134d2f0402bb15\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+128
+129        <receiver
+129-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:29:9-33:20
+130            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+130-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:30:13-85
+131            android:enabled="true"
+131-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:31:13-35
+132            android:exported="false" >
+132-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:32:13-37
+133        </receiver>
+134        <receiver
+134-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:34:9-42:20
+135            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+135-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:35:13-100
+136            android:enabled="true"
+136-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:36:13-35
+137            android:exported="true"
+137-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:37:13-36
+138            android:permission="android.permission.INSTALL_PACKAGES" >
+138-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:38:13-69
+139            <intent-filter>
+139-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:39:13-41:29
+140                <action android:name="com.android.vending.INSTALL_REFERRER" />
+140-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:40:17-79
+140-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:40:25-76
+141            </intent-filter>
+142        </receiver>
+143
+144        <service
+144-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:44:9-47:40
+145            android:name="com.google.android.gms.measurement.AppMeasurementService"
+145-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:45:13-84
+146            android:enabled="true"
+146-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:46:13-35
+147            android:exported="false" />
+147-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:47:13-37
+148        <service
+148-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:48:9-52:72
+149            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+149-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:49:13-87
+150            android:enabled="true"
+150-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:50:13-35
+151            android:exported="false"
+151-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:51:13-37
+152            android:permission="android.permission.BIND_JOB_SERVICE" />
+152-->[com.google.android.gms:play-services-measurement:17.2.1] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\b0936ce58fc7c6864284d0bd3810b836\play-services-measurement-17.2.1\AndroidManifest.xml:52:13-69
+153
+154        <provider
+154-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\fcbb5637981c91962c76ae8e32c4b0ef\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
+155            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+155-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\fcbb5637981c91962c76ae8e32c4b0ef\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
+156            android:authorities="com.example.snapit.lifecycle-process"
+156-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\fcbb5637981c91962c76ae8e32c4b0ef\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+157            android:exported="false"
+157-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\fcbb5637981c91962c76ae8e32c4b0ef\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
+158            android:multiprocess="true" />
+158-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Dhwani\.gradle\caches\transforms-2\files-2.1\fcbb5637981c91962c76ae8e32c4b0ef\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
+159    </application>
+160
+161</manifest>

@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
                 final TextView userName = navigationView.findViewById(R.id.tv_user_name);
                 final TextView userEmail = navigationView.findViewById(R.id.user_email);
                 final ImageView navHeaderImg = navigationView.findViewById(R.id.nav_header_img);
+                navHeaderImg.setImageResource(R.drawable.ic_android);
 
                 if (currentUser != null){
 
